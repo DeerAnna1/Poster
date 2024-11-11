@@ -11,6 +11,7 @@
             margin: 0;
             font-family: Arial, sans-serif;
             overflow: hidden; /* 隐藏页面滚动条 */
+            position: relative; /* 使按钮定位相对 */
         }
 
         .swiper-container {
@@ -28,131 +29,114 @@
             overflow: hidden; /* 隐藏超出部分 */
         }
 
-        .thumbnail {
-            width: 100%;
-            height: 50%;
-            object-fit: cover; /* 保持图片比例，适应容器 */
-            object-position: top; /* 确保显示图片顶部 */
-            transition: transform 0.3s; /* 添加过渡效果 */
-        }
-
         /* 自定义按钮样式 */
         .swiper-button-next,
         .swiper-button-prev {
             display: none; /* 隐藏左右按钮 */
         }
 
-        .swiper-pagination-bullet {
-            background: #000; /* 指示器颜色 */
-        }
-
-        /* 详情展示样式 */
-        .detail-view {
-            display: none; /* 默认隐藏 */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            overflow: hidden; /* 隐藏超出部分 */
-        }
-
-        .detail-content {
-            max-width: 90%;
-            max-height: 90%;
-            overflow: hidden; /* 防止超出 */
-            position: relative;
+        /* 按钮样式 */
+        .button-container {
+            position: fixed; /* 固定定位 */
+            bottom: 20px; /* 距离底部20px */
+            left: 50%;
+            transform: translateX(-50%); /* 居中 */
             display: flex;
-            justify-content: center;
-            align-items: center;
+            gap: 10px; /* 按钮之间的间距 */
+            z-index: 10; /* 确保按钮在其他元素上方 */
         }
 
-        .detail-view img {
-            max-width: 100%;
-            max-height: 100%;
-            transition: transform 0.3s; /* 添加过渡效果 */
-            transform-origin: center; /* 设置放大时的原点为中心 */
-            cursor: grab; /* 鼠标指针为抓取形状 */
-        }
-
-        .zoom-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
+        .action-button {
+            background-color: #007bff; /* 按钮背景色 */
+            color: white; /* 按钮文字颜色 */
             border: none;
             border-radius: 5px;
-            padding: 10px;
-            cursor: pointer;
+            padding: 10px 20px;
             font-size: 16px;
-            z-index: 10; /* 确保按钮在图片上方 */
-        }
-
-        .zoom-button:last-child {
-            top: 60px;
-        }
-
-        .zoom-button i {
-            font-size: 20px;
-        }
-
-        /* 叉号按钮 */
-        .close-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: rgba(255, 0, 0, 0.8);
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            color: white;
-            font-size: 20px;
             cursor: pointer;
-            z-index: 10; /* 确保按钮在图片上方 */
+            transition: background-color 0.3s; /* 背景色过渡效果 */
+        }
+
+        .action-button:hover {
+            background-color: #0056b3; /* 悬停时的背景色 */
+        }
+
+        /* 模态框样式 */
+        .modal {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8); /* 半透明背景 */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            width: 100%; /* 宽度 */
+            height: 100%; /* 高度 */
+            padding: 20px; /* 内边距 */
+            box-sizing: border-box; /* 包含内边距和边框在内 */
+            overflow-y: auto; /* 允许垂直滚动 */
+            position: relative; /* 相对定位，确保关闭按钮位置正确 */
+        }
+
+        /* 关闭按钮悬浮在底部中间 */
+        .close-bottom {
+            position: fixed; /* 固定定位 */
+            left: 50%; /* 水平居中 */
+            bottom: 20px; /* 距离底部20px */
+            transform: translateX(-50%); /* 居中 */
+            background: rgba(0, 0, 0, 0.8); /* 黑色透明背景 */
+            border-radius: 25px; /* 圆形按钮 */
+            padding: 5px 10px; /* 内边距 */
+            cursor: pointer; /* 鼠标指针为手形 */
+            z-index: 101; /* 确保按钮在模态框上方 */
+        }
+        .close-icon {
+            color: white; /* 设置叉号为白色 */
+            font-size: 20px; /* 根据需要调整大小 */
         }
     </style>
 </head>
 <body>
     <div class="swiper-container" id="swiperContainer">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" onclick="showDetail('img1.png')">
-                <img src="img1.png" alt="图片1" class="thumbnail">
+            <div class="swiper-slide" onclick="openModal('poster.html')">
+                文章1
             </div>
-            <div class="swiper-slide" onclick="showDetail('img2.png')">
-                <img src="img2.png" alt="图片2" class="thumbnail">
+            <div class="swiper-slide" onclick="openModal('article2.html')">
+                文章2
             </div>
-            <div class="swiper-slide" onclick="showDetail('img3.png')">
-                <img src="img3.png" alt="图片3" class="thumbnail">
+            <div class="swiper-slide" onclick="openModal('article3.html')">
+                文章3
             </div>
-            <!-- 可以添加更多的图片 -->
         </div>
-        <!-- 添加分页指示器 -->
-        <div class="swiper-pagination"></div>
     </div>
 
-    <!-- 详情展示 -->
-    <div class="detail-view" id="detailView">
-        <button class="close-button" onclick="hideDetail()">✖</button>
-        <div class="detail-content">
-            <img id="detailImage" src="" alt="详情图片" onmousedown="startDrag(event)" onmouseup="stopDrag()" onmouseleave="stopDrag()">
+    <div class="button-container">
+        <button class="action-button" onclick="handleButtonClick(event, '按钮1功能')">按钮1</button>
+        <button class="action-button" onclick="handleButtonClick(event, '按钮2功能')">按钮2</button>
+        <button class="action-button" onclick="handleButtonClick(event, '按钮3功能')">按钮3</button>
+    </div>
+
+    <!-- 模态框 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div id="modalBody">
+                <h2>加载中...</h2>
+            </div>
         </div>
-        <button class="zoom-button" onclick="zoomIn(event)"><i class="fas fa-search-plus"></i></button>
-        <button class="zoom-button" onclick="zoomOut(event)"><i class="fas fa-search-minus"></i></button>
+        <div class="close-bottom" onclick="closeModal()">
+            <div class="close-icon">&times;</div>
+        </div> <!-- 底部关闭按钮 -->
     </div>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-        let isDragging = false; // 是否正在拖动
-        let startY; // 拖动起始位置
-        let imgOffsetY = 0; // 图片偏移量
-        let startX; // 拖动起始位置（X轴）
-        let imgOffsetX = 0; // 图片偏移量（X轴）
-
         const swiper = new Swiper('.swiper-container', {
             direction: 'vertical', // 垂直方向
             loop: true, // 循环模式选项
@@ -169,46 +153,6 @@
             autoplay: false,
         });
 
-        // 显示详情
-        function showDetail(imageSrc) {
-            const detailView = document.getElementById('detailView');
-            const detailImage = document.getElementById('detailImage');
-            detailImage.src = imageSrc;
-            detailView.style.display = 'flex'; // 显示详情
-        }
-
-        // 隐藏详情
-        function hideDetail() {
-            const detailView = document.getElementById('detailView');
-            detailView.style.display = 'none'; // 隐藏详情
-        }
-
-        // 放大功能
-        function zoomIn(event) {
-            event.stopPropagation(); // 阻止事件冒泡
-            const img = document.getElementById('detailImage');
-            const currentScale = getScale(img);
-            img.style.transform = `scale(${currentScale + 0.2})`;
-        }
-
-        // 缩小功能
-        function zoomOut(event) {
-            event.stopPropagation(); // 阻止事件冒泡
-            const img = document.getElementById('detailImage');
-            const currentScale = getScale(img);
-            if (currentScale > 0.2) { // 防止缩小到负值
-                img.style.transform = `scale(${currentScale - 0.2})`;
-            }
-        }
-
-        // 获取当前缩放比例
-        function getScale(img) {
-            const transform = window.getComputedStyle(img).transform;
-            if (transform === 'none') return 1; // 默认比例为1
-            const matrix = transform.match(/matrix\((.+)\)/)[1].split(', ');
-            return parseFloat(matrix[0]); // 获取缩放比例
-        }
-
         // 鼠标滚轮切换图片
         document.getElementById('swiperContainer').addEventListener('wheel', function(event) {
             if (event.deltaY > 0) {
@@ -219,35 +163,47 @@
             event.preventDefault(); // 防止页面滚动
         });
 
-        // 拖动功能
-        function startDrag(event) {
-            isDragging = true;
-            startY = event.clientY; // 获取鼠标起始位置（Y轴）
-            startX = event.clientX; // 获取鼠标起始位置（X轴）
-            const img = document.getElementById('detailImage');
-            img.style.cursor = 'grabbing'; // 更改光标样式
-            event.preventDefault(); // 防止选择文本
+        // 打开模态框并加载内容
+        function openModal(element) {
+            const modalBody = document.getElementById("modalBody");
+            modalBody.innerHTML = '<h2>加载中...</h2>'; // 显示加载提示
+
+            // 使用 AJAX 加载 poster.html 的内容
+            fetch(element)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络错误');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    modalBody.innerHTML = data; // 将内容插入模态框
+                })
+                .catch(error => {
+                    modalBody.innerHTML = '<p>加载失败: ' + error.message + '</p>'; // 显示错误信息
+                });
+
+            document.getElementById("myModal").style.display = "block"; // 显示模态框
         }
 
-        function stopDrag() {
-            isDragging = false;
-            const img = document.getElementById('detailImage');
-            img.style.cursor = 'grab'; // 恢复光标样式
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
         }
 
-        // 处理拖动事件
-        document.getElementById('detailImage').addEventListener('mousemove', function(event) {
-            if (isDragging) {
-                const img = document.getElementById('detailImage');
-                const deltaY = event.clientY - startY; // 计算垂直移动距离
-                const deltaX = event.clientX - startX; // 计算水平移动距离
-                imgOffsetY += deltaY; // 更新垂直偏移量
-                imgOffsetX += deltaX; // 更新水平偏移量
-                img.style.transform = `translate(${imgOffsetX}px, ${imgOffsetY}px) scale(${getScale(img)})`; // 更新位置和缩放
-                startY = event.clientY; // 更新起始位置（Y轴）
-                startX = event.clientX; // 更新起始位置（X轴）
+        // 按钮点击处理
+        function handleButtonClick(event, buttonName) {
+            event.stopPropagation(); // 阻止事件冒泡
+            alert(buttonName + ' 被点击'); // 这里可以添加按钮的具体功能
+        }
+
+        // 点击模态框外部关闭模态框
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target === modal) {
+                closeModal();
             }
-        });
+        }
     </script>
 </body>
 </html>
