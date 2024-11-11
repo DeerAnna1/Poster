@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究海报2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; margin: 0;
+            padding: 20px;
+            background-color: #eef2f3;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #d4f7fe;
+            color: black;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .content {
+            column-width: 400px;
+            column-gap: 10px;
+        }
+        .content-item {
+            break-inside: auto;
+            margin-bottom: 10px;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f9f9f9;
+            transition: all 0.3s;
+        }
+        .content-item:hover {
+            background: #f1f1f1;
+        }
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .editor {
+            margin-bottom: 5px; font-size: 15px;
+            break-inside: auto;
+            border: 1px solid transparent; /* 将边框颜色设置为透明 */
+            padding: 2px 5px; /* 上下边距减少，左右保持原值 */
+            min-height: 50px; /* 设置最小高度 */
+            width: 100%; /* 使宽度自适应 */
+            white-space: pre-wrap; /* 保留空格并允许换行 */
+            overflow-wrap: break-word; /* 允许单词换行 */
+            box-sizing: border-box; /* 包含内边距和边框 */
+            resize: none; /* 禁止用户手动调整大小 */
+            word-wrap: break-word; /* 兼容性 */
+        }
+        table {
+            border-collapse: collapse; /* 合并边框 */
+            width: 100%; /* 表格宽度 */
+            margin: 0px 10px; /* 表格上下间距 */
+        }
+
+        th, td {
+            border: 1px solid #ccc; /* 单元格边框 */
+            padding: 8px; /* 单元格内边距 */            text-align: left; /* 文本左对齐 */
+        }
+
+        th {
+            background-color: #f2f2f2; /* 表头背景色 */
+        }
+        .button {
+            margin-top: 5px;
+        }
+        .container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .part {
+            background-color: blue;
+        }
+        .custom-h2 {
+            font-size: 20px;
+
+            color: white;
+            padding-left: 25px;
+        }
+        h2 {
+            margin: 5px;
+        }
+        ul {
+            margin: 0px;
+        }
+        ol {
+            margin: 0px;
+        }
+        li {
+            margin-right: 20px; /* 列表项之间的间距 */
+            line-height: 1.6; /* 设置行高以增加可读性 */
+            white-space: normal; /* 允许内容换行 */
+            vertical-align: middle; /* 垂直居中对齐 */
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="capture">
+    <div class="header" placeholder="请输入 Markdown 文本...">{{ content1 | safe }}</div>
+    </br>
+    <div class="editor" placeholder="请输入 Markdown 文本...">{{ content2 | safe }}</div>
+    <div class="editor" placeholder="请输入 Markdown 文本...">{{ content3 | safe }}</div>
+    <div class="editor" placeholder="请输入 Markdown 文本...">{{ content4 | safe }}</div>
+    <div class="editor" placeholder="请输入 Markdown 文本...">{{ content5| safe }}</div>
+    <audio controls>
+        <source src="你的音频文件.wav" type="audio/wav">
+        您的浏览器不支持音频元素。
+    </audio>
+    </br> </br>
+    <div class="content">
+        <div class="content-item">
+            <div class="part">
+                <div class="custom-h2" placeholder="请输入 Markdown 文本...">{{ content6 | safe }}</div>
+            </div>
+            <div>
+                <div class="editor" placeholder="请输入 Markdown 文本...">{{ content7 | safe }}</div>
+            </div>
+        </div>
+        <div class="content-item">
+            <div class="part">
+                <div class="custom-h2" placeholder="请输入 Markdown 文本...">{{ content8 | safe }}</div>
+            </div>
+            <div>
+                <div class="editor" placeholder="请输入 Markdown 文本...">{{ content9 | safe }}</div>
+            </div>
+        </div>
+        <div class="content-item">
+            <div class="part">
+                <div class="custom-h2" placeholder="请输入 Markdown 文本...">{{ content10 | safe }}</div>
+            </div>
+            <div>
+                <div class="editor" placeholder="请输入 Markdown 文本...">{{ content11 | safe }}</div>
+            </div>
+        </div>
+        <div class="content-item">
+            <div class="part">
+                <div class="custom-h2" placeholder="请输入 Markdown 文本...">{{ content12 | safe }}</div>
+            </div>
+            <div>
+                <div class="editor" placeholder="请输入 Markdown 文本...">{{ content13 | safe }}</div>
+            </div>
+        </div>
+        <div class="content-item">
+            <div class="part">
+                <div class="custom-h2" placeholder="请输入 Markdown 文本...">{{ content14 | safe }}</div>
+            </div>
+            <div>
+                <div class="editor" placeholder="请输入 Markdown 文本...">{{ content15 | safe }}</div>
+            </div>
+        </div>
+        <div class="content-item">
+            <div class="part">
+                <div class="custom-h2" placeholder="请输入 Markdown 文本...">{{ content16 | safe }}</div>
+            </div>
+            <div>
+                <div class="editor" placeholder="请输入 Markdown 文本...">{{ content17 | safe }}</div>
+            </div>
+        </div>
+        <div class="content-item">
+            <div class="part">
+                <div class="custom-h2" placeholder="请输入 Markdown 文本...">{{ content18 | safe }}</div>
+            </div>
+            <div>
+                <div class="editor" placeholder="请输入 Markdown 文本...">{{ content19 | safe }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const masonry = new Masonry('#masonry-grid', { itemSelector: '.grid-item', columnWidth: 400, gutter: 10 });
+    });
+    // 监听所有 grid-item 的内容变化
+    document.querySelectorAll('.content-item').forEach(function(item) {
+        new MutationObserver(function(mutations) {
+            masonry.layout(); // 重新布局
+        }).observe(item, { childList: true, subtree: true, characterData: true });
+    });
+
+    editor.addEventListener('input', () => {
+        const markdownText = editor.innerText.trim();
+
+        if (markdownText) {
+            const htmlContent = marked(markdownText, {
+                gfm: true, // 使用 GitHub Flavored Markdown
+                tables: true // 启用表格支持
+            });
+            editor.innerHTML = htmlContent; // 更新编辑器内容
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, editor]); // 渲染公式
+        }
+
+        // 调整编辑器高度
+        editor.style.height = 'auto'; // 重置高度
+        editor.style.height = `${editor.scrollHeight}px`; // 设置为内容高度
+    });
+
+
+    // 插入换行符的函数
+    function insertLineBreaks(editor) {
+        const maxWidth = editor.offsetWidth; // 获取编辑器的宽度
+        const content = editor.innerText; // 获取编辑器内容
+
+        // 使用一个临时元素来测量公式的宽度
+        const tempElement = document.createElement('span');
+        tempElement.style.visibility = 'hidden';
+        tempElement.style.whiteSpace = 'nowrap';
+        document.body.appendChild(tempElement);
+
+        for (const line of lines) {
+            tempElement.innerText = line; // 将内容放入临时元素中
+            const lineWidth = tempElement.offsetWidth; // 获取宽度
+
+            if (lineWidth > maxWidth) {
+                // 如果宽度超出，则插入换行符
+                newContent += line.replace(/\$/g, '$\\newline); // 在公式中插入换行符
+            } else {
+                newContent += line; // 否则保持原样
+            }
+        }
+
+        document.body.removeChild(tempElement); // 移除临时元素
+        editor.innerText = newContent; // 更新编辑器内容
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const editors = document.getElementsByClassName('editor');
+
+        Array.from(editors).forEach(editor => {
+            // 调整编辑器高度
+            editor.addEventListener('input', () => {
+                insertLineBreaks(editor); // 调用插入换行符的函数
+                editor.style.height = 'auto'; // 重置高度
+                editor.style.height = `${editor.scrollHeight}px`; // 设置为内容高度
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

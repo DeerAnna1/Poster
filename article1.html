@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章1</title>
+    <style>
+        body {
+            margin: 0; /* 清除默认边距 */
+            overflow-y: auto; /* 允许垂直滚动 */
+        }
+
+        img {
+            display: block; /* 使图片为块级元素 */
+            max-width: 100%; /* 最大宽度为100% */
+            height: auto; /* 高度自动，保持比例 */
+        }
+
+        .close-button {
+            position: fixed; /* 固定位置 */
+            top: 20px; /* 距离顶部20px */
+            right: 20px; /* 距离右侧20px */
+            background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+            color: white; /* 文字颜色 */
+            border: none; /* 去掉边框 */
+            border-radius: 50%; /* 圆形按钮 */
+            width: 40px; /* 按钮宽度 */
+            height: 40px; /* 按钮高度 */
+            font-size: 24px; /* 字体大小 */
+            cursor: pointer; /* 鼠标指针样式 */
+            display: flex; /* 使用 flexbox 使内容居中 */
+            align-items: center; /* 垂直居中 */
+            justify-content: center; /* 水平居中 */
+        }
+    </style>
+</head>
+<body>
+    <img src="img1.png" alt="文章1的图片">
+    <button class="close-button" onclick="window.location.href='carousel.html'">&times;</button> <!-- 叉号按钮 -->
+</body>
+</html>
