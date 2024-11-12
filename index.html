@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学术海报（网页版）</title>
+    <title>学术海报</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_HTML"></script>
     <style>
         body {
             margin: 0;
@@ -178,6 +179,11 @@
                 })
                 .then(data => {
                     modalBody.innerHTML = data; // 将内容插入模态框
+                    if (typeof MathJax !== 'undefined') {
+                        MathJax.Hub.Queue(["Typeset", MathJax.Hub, modalBody]);
+                    } else {
+                        console.error("MathJax is not defined");
+                    }
                 })
                 .catch(error => {
                     modalBody.innerHTML = '<p>加载失败: ' + error.message + '</p>'; // 显示错误信息
