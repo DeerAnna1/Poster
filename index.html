@@ -87,13 +87,16 @@
         }
         .editor {
             width: 80%;           /* 设置宽度为80% */
+            height: 300px;       /* 设置固定高度 */
             margin: 0 auto;      /* 自动水平居中 */
             text-align: left;    /* 文本左对齐（可根据需要修改） */
             padding: 20px;       /* 内边距（可根据需要调整） */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 添加阴影效果（可选） */
             border-radius: 8px;  /* 圆角边框（可选） */
             background-color: #f9f9f9; /* 背景颜色（可选） */
+            overflow-y: auto;    /* 允许垂直滚动 */
         }
+
         /* 侧边栏样式 */
         .sidebar {
             position: fixed;
@@ -142,6 +145,8 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide" id="item0">
                 <div class="editor" id="editor1" placeholder="请输入 Markdown 文本...">
+                    <a href="poster.html?index=0">打开海报</a>
+                    <br>
                     题目：On the Cost of Model-Serving Frameworks: An Experimental Evaluation<br>作者：Pasquale De Rosa, Yérom-David Bromberg, Pascal Felber, Djob Mvondo, Valerio Schiavoni<br>日期：2024-11-15<br>链接：http://arxiv.org/pdf/2411.10337v1<br>摘要：In machine learning (ML), the inference phase is the process of applying
 pre-trained models to new, unseen data with the objective of making
 predictions. During the inference phase, end-users interact with ML services to
@@ -159,12 +164,12 @@ other frameworks in serving deep learning (DL) models. Moreover, we show that
 DL-specific frameworks (TensorFlow Serving and TorchServe) display
 significantly lower latencies than the three general-purpose ML frameworks
 (BentoML, MLFlow, and MLServer).
-                    <br>
-                    <a href="poster.html?index=0">打开海报</a>
                 </div>
             </div>
             <div class="swiper-slide" id="item1">
                 <div class="editor" id="editor2" placeholder="请输入 Markdown 文本...">
+                    <a href="poster.html?index=0">打开海报</a>
+                    <br>
                     题目：Generalized Conditional Functional Principal Component Analysis<br>作者：Yu Lu, Xinkai Zhou, Erjia Cui, Dustin Rogers, Ciprian M. Crainiceanu, Julia Wrobel, Andrew Leroux<br>日期：2024-11-15<br>链接：http://arxiv.org/pdf/2411.10312v1<br>摘要：We propose generalized conditional functional principal components analysis
 (GC-FPCA) for the joint modeling of the fixed and random effects of
 non-Gaussian functional outcomes. The method scales up to very large functional
@@ -181,20 +186,18 @@ active/inactive profiles over the day (\$1{,}440$ 0/1 measurements per person)
 for \$8{,}700$ study participants in the National Health and Nutrition
 Examination Survey (NHANES) 2011-2014. We show that state-of-the-art approaches
 cannot handle data of this size and complexity, while GC-FPCA can.
-                    <br>
-                    <a href="article2.html?index=1">打开海报</a>
                 </div>
             </div>
             <div class="swiper-slide" id="item2">
                 <div class="editor" id="editor3" placeholder="请输入 Markdown 文本...">
+                    <a href="poster.html?index=0">打开海报</a>
+                    <br>
                     题目：Self-interacting CBO: Existence, uniqueness, and long-time convergence<br>作者：Hui Huang, Hicham Kouhkouh<br>日期：2024-11-15<br>链接：http://arxiv.org/pdf/2411.10295v1<br>摘要：A self-interacting dynamics that mimics the standard Consensus-Based
 Optimization (CBO) model is introduced. This single-particle dynamics is shown
 to converge to a unique invariant measure that approximates the global minimum
 of a given function. As an application, its connection to CBO with Personal
 Best introduced by C. Totzeck and M.-T. Wolfram (Math. Biosci. Eng., 2020) has
 been established.
-                    <br>
-                    <a href="article3.html?index=2">打开海报</a>
                 </div>
             </div>
         </div>
