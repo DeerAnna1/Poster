@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>研究海报</title>
+    <title>研究海报2</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -80,12 +80,11 @@
             width: 100%; /* 表格宽度 */
             margin: 0px 10px; /* 表格上下间距 */
         }
-
         th, td {
             border: 1px solid #ccc; /* 单元格边框 */
-            padding: 8px; /* 单元格内边距 */            text-align: left; /* 文本左对齐 */
+            padding: 8px; /* 单元格内边距 */
+            text-align: left; /* 文本左对齐 */
         }
-
         th {
             background-color: #f2f2f2; /* 表头背景色 */
         }
@@ -120,10 +119,41 @@
             white-space: normal; /* 允许内容换行 */
             vertical-align: middle; /* 垂直居中对齐 */
         }
+        .button-download {
+            position: fixed; /* 固定定位 */
+            top: 10px;
+            right: 0;
+            z-index: 10; /* 确保按钮在其他元素上方 */
+        }
+        .action-download {
+            background-color: #c3c3bd; /* 按钮背景色 */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* 背景色过渡效果 */
+        }
+        .action-download:hover {
+            background-color: #bfc1c2; /* 悬停时的背景色 */
+        }
+        .close-bottom {
+            position: fixed;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 10; /* 确保按钮在其他元素上方 */
+        }
     </style>
 </head>
 <body>
-<div class="container" id="capture">
+<div class="container" >
     <div class="header" placeholder="请输入 Markdown 文本..."><h1>Do better language models have crisper vision?</h1>
 Hanrong Ye\({}^{1}\), Haotian Zhang\({}^{2}\), Erik Daxberger\({}^{2}\), Lin Chen\({}^{2}\), \({}^{\sharp}\)Zongyu Lin\({}^{3}\), Yanghao Li\({}^{2}\), Bowen Zhang\({}^{2}\), Haoxuan You\({}^{2}\), Dan Xu\({}^{1}\), Zhe Gan\({}^{2}\), Jiasen Lu\({}^{2}\), Yinfei Yang\({}^{2}\)<br>\({}^{1}\)CSE, HKUST \({}^{2}\)Apple \({}^{3}\)UCLA<br></div>
     </br>
@@ -222,77 +252,53 @@ Hanrong Ye\({}^{1}\), Haotian Zhang\({}^{2}\), Erik Daxberger\({}^{2}\), Lin Che
             </div>
         </div>
     </div>
+    <div class="button-download">
+        <button class="action-download" id="openPDFButton">下载</button>
+    </div>
+    <button class="close-bottom" onclick="goBack()">×</button>
 </div>
-
 <script>
+    let index; // 声明 index 为全局变量
     document.addEventListener('DOMContentLoaded', function() {
-        const masonry = new Masonry('#masonry-grid', { itemSelector: '.grid-item', columnWidth: 400, gutter: 10 });
-    });
-    // 监听所有 grid-item 的内容变化
-    document.querySelectorAll('.content-item').forEach(function(item) {
-        new MutationObserver(function(mutations) {
-            masonry.layout(); // 重新布局
-        }).observe(item, { childList: true, subtree: true, characterData: true });
-    });
+        // 获取 URL 中的查询参数
+        const urlParams = new URLSearchParams(window.location.search);
+        index = urlParams.get('index'); // 获取索引值
+        console.log('当前索引:', index);
 
-    editor.addEventListener('input', () => {
-        const markdownText = editor.innerText.trim();
-
-        if (markdownText) {
-            const htmlContent = marked(markdownText, {
-                gfm: true, // 使用 GitHub Flavored Markdown
-                tables: true // 启用表格支持
+        const downloadButton = document.getElementById('openPDFButton');
+        if (downloadButton) {
+            downloadButton.addEventListener('click', function() {
+                console.log('下载按钮被点击');
+                const pdfPath = 'arxiv_pdfs/2411.09613v1.PTR__Precision_Driven_Tool_Recommendation_for_Large_Language_Models.pdf';
+                window.open(pdfPath, '_blank');
             });
-            editor.innerHTML = htmlContent; // 更新编辑器内容
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub, editor]); // 渲染公式
+        } else {
+            console.error('下载按钮未找到');
         }
-
-        // 调整编辑器高度
-        editor.style.height = 'auto'; // 重置高度
-        editor.style.height = `${editor.scrollHeight}px`; // 设置为内容高度
-    });
-
-
-    // 插入换行符的函数
-    function insertLineBreaks(editor) {
-        const maxWidth = editor.offsetWidth; // 获取编辑器的宽度
-        const content = editor.innerText; // 获取编辑器内容
-
-        // 使用一个临时元素来测量公式的宽度
-        const tempElement = document.createElement('span');
-        tempElement.style.visibility = 'hidden';
-        tempElement.style.whiteSpace = 'nowrap';
-        document.body.appendChild(tempElement);
-
-        for (const line of lines) {
-            tempElement.innerText = line; // 将内容放入临时元素中
-            const lineWidth = tempElement.offsetWidth; // 获取宽度
-
-            if (lineWidth > maxWidth) {
-                // 如果宽度超出，则插入换行符
-                newContent += line.replace(/\$/g, '$\\newline); // 在公式中插入换行符
-            } else {
-                newContent += line; // 否则保持原样
-            }
-        }
-
-        document.body.removeChild(tempElement); // 移除临时元素
-        editor.innerText = newContent; // 更新编辑器内容
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
         const editors = document.getElementsByClassName('editor');
-
         Array.from(editors).forEach(editor => {
-            // 调整编辑器高度
             editor.addEventListener('input', () => {
-                insertLineBreaks(editor); // 调用插入换行符的函数
-                editor.style.height = 'auto'; // 重置高度
-                editor.style.height = `${editor.scrollHeight}px`; // 设置为内容高度
+                const markdownText = editor.innerText.trim();
+                if (markdownText) {
+                    const htmlContent = marked(markdownText, {
+                        gfm: true,
+                        tables: true
+                    });
+                    editor.innerHTML = htmlContent;
+                    MathJax.typeset();
+                }
+                editor.style.height = 'auto';
+                editor.style.height = `${editor.scrollHeight}px`;
             });
         });
     });
-
+    function goBack() {
+        if (index !== null) {
+            window.location.href = `index.html#item${index}`;
+        } else {
+            window.history.back();
+        }
+    }
 </script>
 </body>
 </html>
