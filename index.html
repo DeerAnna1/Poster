@@ -41,9 +41,12 @@
             align-items: center;
             margin-top: 60px;
         }
+        .button2{
+            width:100%;
+        }
         .button-container {
             position: fixed;
-            bottom: 0;
+            bottom: 15px;
             left: 0;
             right: 0;
             display: flex;
@@ -80,6 +83,7 @@
             color: black;
             border: none;
             padding: 10px;
+            padding-left:20px;
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s;
@@ -122,12 +126,15 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            color: #aaa;
+            color: rgba(255, 255, 255, 0.7); /* 透明白色 */
             font-size: 28px;
             font-weight: bold;
             z-index: 1001;
             transition: color 0.3s, transform 0.3s;
             display: none;
+            background-color: rgba(0, 0, 0, 0.5); /* 透明黑色背景 */
+            padding: 5px 10px; /* 添加一些内边距 */
+            border-radius: 50px; /* 添加圆角 */
         }
         .close:hover,
         .close:focus {
@@ -200,15 +207,12 @@
             background: linear-gradient(45deg, rgba(255, 107, 107, 1), rgba(240, 101, 149, 1));
             transform: scale(1.05);
         }
-        .button2{
-            width:100%;
-        }
     </style>
 </head>
 <body>
     <div class="button-container2">
         <div class="button2">
-            <button class="action-button2" onclick="toggleSidebar()">></button>
+            <button class="action-button2" onclick="toggleSidebar()">>></button>
         </div>
     </div>
     <div class="swiper-container" id="swiperContainer">
@@ -218,7 +222,7 @@
                 <div>
                     <span></span><button class="transparent-gradient-button" onclick="openModal('poster.html')">海报</button>
                     <span>
-                        <button class="transparent-gradient-button" onclick="openPDF('2411.12723v1.Homogeneous_planet_masses_I__Reanalysis_of_archival_HARPS_radial_velocities.pdf')">原文</button>
+                        <button class="transparent-gradient-button" onclick="openPDF('arxiv_pdfs/2411.12723v1.Homogeneous_planet_masses_I__Reanalysis_of_archival_HARPS_radial_velocities.pdf')">原文</button>
                     </span>
                 </div>
             </div>
@@ -227,7 +231,7 @@
                 <div>
                     <span></span><button class="transparent-gradient-button" onclick="openModal('article2.html')">海报</button>
                     <span>
-                        <button class="transparent-gradient-button" onclick="openPDF('2411.12723v1.Homogeneous_planet_masses_I__Reanalysis_of_archival_HARPS_radial_velocities.pdf')">原文</button>
+                        <button class="transparent-gradient-button" onclick="openPDF('arxiv_pdfs/2411.12723v1.Homogeneous_planet_masses_I__Reanalysis_of_archival_HARPS_radial_velocities.pdf')">原文</button>
                     </span>
                 </div>
             </div>
@@ -236,7 +240,7 @@
                 <div>
                     <span></span><button class="transparent-gradient-button" onclick="openModal('article3.html')">海报</button>
                     <span>
-                        <button class="transparent-gradient-button" onclick="openPDF('2411.12723v1.Homogeneous_planet_masses_I__Reanalysis_of_archival_HARPS_radial_velocities.pdf')">原文</button>
+                        <button class="transparent-gradient-button" onclick="openPDF('arxiv_pdfs/2411.12723v1.Homogeneous_planet_masses_I__Reanalysis_of_archival_HARPS_radial_velocities.pdf')">原文</button>
                     </span>
                 </div>
             </div>
