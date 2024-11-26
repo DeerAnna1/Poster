@@ -196,18 +196,6 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-
-        const downloadButton = document.getElementById('openPDFButton');
-        if (downloadButton) {
-            downloadButton.addEventListener('click', function() {
-                console.log('下载按钮被点击');
-                const pdfPath = 'arxiv_pdfs/2411.09613v1.PTR__Precision_Driven_Tool_Recommendation_for_Large_Language_Models.pdf';
-                window.open(pdfPath, '_blank');
-            });
-        } else {
-            console.error('下载按钮未找到');
-        }
-
         const editors = document.getElementsByClassName('editor');
         Array.from(editors).forEach(editor => {
             editor.addEventListener('input', () => {
@@ -225,14 +213,6 @@
             });
         });
     });
-
-    function goBack() {
-        if (index !== null) {
-            window.location.href = `index.html#item${index}`;
-        } else {
-            window.history.back();
-        }
-    }
 </script>
 </body>
 </html>
