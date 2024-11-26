@@ -19,8 +19,8 @@
             flex-direction: column;
             justify-content: center;
             width: 100%;
-            height: calc(100vh - 60px); /* 减去按钮的高度 */
-            margin-top: 60px; /* 添加与按钮高度相同的外边距 */
+            height: calc(100vh - 40px);
+            margin-top: 40px; /* 添加与按钮高度相同的外边距 */
         }
         .swiper-slide {
             display: flex;
@@ -39,7 +39,7 @@
         .swiper-wrapper {
             flex: 1; /* 使 swiper-wrapper 占据剩余空间 */
             align-items: center;
-            margin-top: 60px;
+<!--            margin-top: 10px;-->
         }
         .button2{
             width:100%;
@@ -133,7 +133,7 @@
             transition: color 0.3s, transform 0.3s;
             display: none;
             background-color: rgba(0, 0, 0, 0.5); /* 透明黑色背景 */
-            padding: 5px 10px; /* 添加一些内边距 */
+            padding: 2px 10px; /* 添加一些内边距 */
             border-radius: 50px; /* 添加圆角 */
         }
         .close:hover,
@@ -147,19 +147,21 @@
             break-inside: auto;
             border: 1px solid transparent;
             padding: 2px 5px;
-            min-height: 50px;
+<!--            min-height: 50px;-->
             width: 100%;
             white-space: pre-wrap;
             overflow-wrap: break-word;
             box-sizing: border-box;
             resize: none;
             word-wrap: break-word;
+            height: auto;
+            text-align: left; /* 文本靠左显示 */
         }
         .sidebar {
             position: fixed;
             top: 0;
-            left: -80%; /* 初始位置在屏幕外 */
-            width: 80%; /* 宽度为50% */
+            left: -30%; /* 初始位置在屏幕外 */
+            width: 30%; /* 宽度为50% */
             height: 100%;
             background-color: #f9f9f9;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
@@ -207,6 +209,45 @@
             background: linear-gradient(45deg, rgba(255, 107, 107, 1), rgba(240, 101, 149, 1));
             transform: scale(1.05);
         }
+        .button-down{
+            display: flex;
+            position: fixed; /* 固定定位 */
+            bottom: 0; /* 距离底部为0 */
+        }
+        .close-button {
+            position: fixed;
+            bottom: 0; /* 距离底部为0 */
+            display: inline-block;
+            background-color: rgba(255, 77, 77, 0.7); /* 红色透明背景 */
+            border: none;
+            border-radius: 50%; /* 圆形按钮 */
+            width: 25px; /* 宽度 */
+            height: 25px; /* 高度 */
+            font-size: 24px; /* 字体大小 */
+            text-align: center; /* 文字居中 */
+            cursor: pointer; /* 鼠标悬停时显示手形光标 */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+            transition: background-color 0.3s, transform 0.2s; /* 过渡效果 */
+            z-index: 1000; /* 确保在其他元素上方 */
+            margin: 20px 20px;
+        }
+        .close-button:hover {
+            background-color: #ff1a1a; /* 悬停时更深的红色 */
+            transform: scale(1.1); /* 悬停时略微放大 */
+        }
+        h2{
+            margin:0 0 0 8px;
+        }
+        p{
+            margin:0 5px 0 8px;
+            font-size: 15px;
+        }
+        .text{
+            width:100%;
+        }
+
+
+
     </style>
 </head>
 <body>
@@ -218,47 +259,105 @@
     <div class="swiper-container" id="swiperContainer">
         <div class="swiper-wrapper">
             <div class="swiper-slide" id="item0">
-                <div class="editor" id="editor1" placeholder="请输入 Markdown 文本...">题目：Homogeneous planet masses I: Reanalysis of archival HARPS radial velocities<br>作者：H. L. M. Osborne, L. D. Nielsen, V. Van Eylen, O. Barragán<br>日期：2024-11-19<br>摘要：Empirical exoplanet mass-radius relations have been used to study the demographics and compositions of small exoplanets for many years. However, the heterogeneous nature of these measurements hinders robust statistical analysis of this population, particularly with regard to the masses of planets. For this reason, we perform a homogeneous and consistent re-analysis of the radial velocity (RV) observations of 85 small exoplanets using publicly available HARPS RV data and the fitting toolkit Pyaneti.</div>
-                <div>
-                    <span></span><button class="transparent-gradient-button" onclick="openModal('poster.html')">海报</button>
+                <div ><h2>题目：Recommender Systems for Good (RS4Good): Survey of Use Cases and a Call to Action for Research that Matters</h2></div>
+                <p>作者：Dietmar Jannach, Alan Said, Marko Tkalčič, Markus Zanker</p>
+                <div class="text"><p>日期：2024-11-25</p></div>
+                <div class="text"><p>摘要：In the area of recommender systems, the vast majority of research efforts is
+spent on developing increasingly sophisticated recommendation models, also
+using increasingly more computational resources. Unfortunately, most of these
+research efforts target a very small set of application domains, mostly
+e-commerce and media recommendation. Furthermore, many of these models are
+never evaluated with users, let alone put into practice. The scientific,
+economic and societal value of much of these efforts by scholars therefore
+remains largely unclear. To achieve a stronger positive impact resulting from
+these efforts, we posit that we as a research community should more often
+address use cases where recommender systems contribute to societal good
+(RS4Good). In this opinion piece, we first discuss a number of examples where
+the use of recommender systems for problems of societal concern has been
+successfully explored in the literature. We then proceed by outlining a
+paradigmatic shift that is needed to conduct successful RS4Good research, where
+the key ingredients are interdisciplinary collaborations and longitudinal
+evaluation approaches with humans in the loop.</p></div>
+                <div class="button-down">
+                    <span><button class="transparent-gradient-button" onclick="openModal('poster.html')">海报</button></span>
                     <span>
-                        <button class="transparent-gradient-button" onclick="openPDF('2411.12723v1.Homogeneous_planet_masses_I__Reanalysis_of_archival_HARPS_radial_velocities.pdf')">原文</button>
+                        <button class="transparent-gradient-button" onclick="openPDF('arxiv_pdfs/2411.16645v1.Recommender_Systems_for_Good__RS4Good___Survey_of_Use_Cases_and_a_Call_to_Action_for_Research_that_Matters.pdf')">原文</button>
                     </span>
                 </div>
             </div>
             <div class="swiper-slide" id="item1">
-                <div class="editor" id="editor2" placeholder="请输入 Markdown 文本...">题目：Identifying patterns of proprioception and target matching acuity in healthy humans<br>作者：Jacob Carducci, Jeremy D. Brown<br>日期：2024-11-19<br>摘要：Traditional approaches to measurement in upper-limb therapy have gaps that electronic sensing and recording can help fill. We highlight shortcomings in current kinematic recording devices, and we introduce a wrist sensing device that performs multimodal sensing during single-axis rotation.</div>
-                <div>
-                    <span></span><button class="transparent-gradient-button" onclick="openModal('article2.html')">海报</button>
+                <div ><h2>题目：F -- A Model of Events based on the Foundational Ontology DOLCE+DnS Ultralite</h2></div>
+                <p>作者：Ansgar Scherp, Thomas Franz, Carsten Saathoff, Steffen Staab</p>
+                <div class="text"><p>日期：2024-11-25</p></div>
+                <div class="text"><p>摘要：The lack of a formal model of events hinders interoperability in distributed
+event-based systems. In this paper, we present a formal model of events, called
+Event-Model-F. The model is based on the foundational ontology DOLCE+DnS
+Ultralite (DUL) and provides comprehensive support to represent time and space,
+objects and persons, as well as mereological, causal, and correlative
+relationships between events. In addition, the Event-Model-F provides a
+flexible means for event composition, modeling event causality and event
+correlation, and representing different interpretations of the same event. The
+Event-Model-F is developed following the pattern-oriented approach of DUL, is
+modularized in different ontologies, and can be easily extended by domain
+specific ontologies.</p></div>
+                <div class="button-down">
+                    <span><button class="transparent-gradient-button" onclick="openModal('article2.html')">海报</button></span>
                     <span>
-                        <button class="transparent-gradient-button" onclick="openPDF('2411.12723v1.Homogeneous_planet_masses_I__Reanalysis_of_archival_HARPS_radial_velocities.pdf')">原文</button>
+                        <button class="transparent-gradient-button" onclick="openPDF('arxiv_pdfs/2411.16609v1.F____A_Model_of_Events_based_on_the_Foundational_Ontology_DOLCE_DnS_Ultralite.pdf')">原文</button>
                     </span>
                 </div>
             </div>
             <div class="swiper-slide" id="item2">
-                <div class="editor" id="editor3" placeholder="请输入 Markdown 文本...">题目：Locomotion Mode Transitions: Tackling System- and User-Specific Variability in Lower-Limb Exoskeletons<br>作者：Andrea Dal Prete, Zeynep Özge Orhan, Anastasia Bolotnikova, Marta Gandolla, Auke Ijspeert, Mohamed Bouri<br>日期：2024-11-19<br>摘要：Accurate detection of locomotion transitions, such as walk to sit, walk to stair ascent, and descent, is crucial to effectively control robotic assistive devices, such as lower-limb exoskeletons, as each locomotion mode requires specific assistance. Variability in collected sensor data introduced by user- or system-specific characteristics makes it challenging to maintain high transition detection accuracy while avoiding latency using non-adaptive classification models.</div>
-                <div>
-                    <span></span><button class="transparent-gradient-button" onclick="openModal('article3.html')">海报</button>
+                <div ><h2>题目：When Is Heterogeneity Actionable for Personalization?</h2></div>
+                <p>作者：Anya Shchetkina, Ron Berman</p>
+                <div class="text"><p>日期：2024-11-25</p></div>
+                <div class="text"><p>摘要：Targeting and personalization policies can be used to improve outcomes beyond
+the uniform policy that assigns the best performing treatment in an A/B test to
+everyone. Personalization relies on the presence of heterogeneity of treatment
+effects, yet, as we show in this paper, heterogeneity alone is not sufficient
+for personalization to be successful. We develop a statistical model to
+quantify "actionable heterogeneity," or the conditions when personalization is
+likely to outperform the best uniform policy. We show that actionable
+heterogeneity can be visualized as crossover interactions in outcomes across
+treatments and depends on three population-level parameters: within-treatment
+heterogeneity, cross-treatment correlation, and the variation in average
+responses. Our model can be used to predict the expected gain from
+personalization prior to running an experiment and also allows for sensitivity
+analysis, providing guidance on how changing treatments can affect the
+personalization gain. To validate our model, we apply five common
+personalization approaches to two large-scale field experiments with many
+interventions that encouraged flu vaccination. We find an 18% gain from
+personalization in one and a more modest 4% gain in the other, which is
+consistent with our model. Counterfactual analysis shows that this difference
+in the gains from personalization is driven by a drastic difference in
+within-treatment heterogeneity. However, reducing cross-treatment correlation
+holds a larger potential to further increase personalization gains. Our
+findings provide a framework for assessing the potential from personalization
+and offer practical recommendations for improving gains from targeting in
+multi-intervention settings.</p></div>
+                <div class="button-down">
+                    <span><button class="transparent-gradient-button" onclick="openModal('article3.html')">海报</button></span>
                     <span>
-                        <button class="transparent-gradient-button" onclick="openPDF('2411.12723v1.Homogeneous_planet_masses_I__Reanalysis_of_archival_HARPS_radial_velocities.pdf')">原文</button>
+                        <button class="transparent-gradient-button" onclick="openPDF('arxiv_pdfs/2411.16552v1.When_Is_Heterogeneity_Actionable_for_Personalization_.pdf')">原文</button>
                     </span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="button-container">
+    <!--<div class="button-container">
         <div class="button2">
             <button class="action-button2" onclick="handleButtonClick(event, '点击主页')">主页</button>
         </div>
-    </div>
+    </div>-->
     <div class="sidebar" id="sidebar">
         <div class="dropdown-content">
-            <button class="action-button">选择一个关键词</button>
+            <button class="action-button">选择关键词</button>
             <a href="#option1">关键词 1</a>
             <a href="#option2">关键词 2</a>
             <a href="#option3">关键词 3</a>
             <a href="#option4">关键词 4</a>
         </div>
+        <button class="close-button" onclick="toggleSidebar()">×</button>
     </div>
     <div class="modal" id="modal">
         <div class="modal-content">
@@ -271,6 +370,10 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         let previousIndex = 0; // 用于保存之前的滑动索引
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open'); // 切换侧边栏的打开状态
+        }
         function openModal(url) {
             const modal = document.getElementById('modal');
             const modalIframe = document.getElementById('modal-iframe');
