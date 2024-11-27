@@ -19,8 +19,8 @@
             flex-direction: column;
             justify-content: center;
             width: 100%;
-            height: calc(100vh - 40px);
-            margin-top: 40px; /* 添加与按钮高度相同的外边距 */
+            height: calc(100vh - 30px);
+            margin-top: 30px; /* 添加与按钮高度相同的外边距 */
         }
         .swiper-slide {
             display: flex;
@@ -39,7 +39,7 @@
         .swiper-wrapper {
             flex: 1; /* 使 swiper-wrapper 占据剩余空间 */
             align-items: center;
-<!--            margin-top: 10px;-->
+            margin-top: 30px ;
         }
         .button2{
             width:100%;
@@ -126,14 +126,14 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.7); /* 透明白色 */
+            color: rgba(255, 255, 255, 0.7);
             font-size: 28px;
             font-weight: bold;
             z-index: 1001;
             transition: color 0.3s, transform 0.3s;
             display: none;
-            background-color: rgba(0, 0, 0, 0.5); /* 透明黑色背景 */
-            padding: 2px 10px; /* 添加一些内边距 */
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2px 10px;
             border-radius: 50px; /* 添加圆角 */
         }
         .close:hover,
@@ -155,13 +155,13 @@
             resize: none;
             word-wrap: break-word;
             height: auto;
-            text-align: left; /* 文本靠左显示 */
+            text-align: left;
         }
         .sidebar {
             position: fixed;
             top: 0;
-            left: -30%; /* 初始位置在屏幕外 */
-            width: 30%; /* 宽度为50% */
+            left: -30%;
+            width: 30%;
             height: 100%;
             background-color: #f9f9f9;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
@@ -211,35 +211,36 @@
         }
         .button-down{
             display: flex;
-            position: fixed; /* 固定定位 */
-            bottom: 0; /* 距离底部为0 */
+            position: fixed;
+            margin: 0 0 20px 0;
+            bottom: 0;
         }
         .close-button {
             position: fixed;
-            bottom: 0; /* 距离底部为0 */
+            bottom: 0;
             border: none;
-            font-size: 24px; /* 字体大小 */
-            cursor: pointer; /* 鼠标悬停时显示手形光标 */
+            font-size: 24px;
+            cursor: pointer;
             z-index: 1000; /* 确保在其他元素上方 */
             margin: 20px 20px;
         }
-        .close-button:hover {
-            background-color: #ff1a1a; /* 悬停时更深的红色 */
-            transform: scale(1.1); /* 悬停时略微放大 */
-        }
-        h2{
+        h3{
             margin:0 0 0 8px;
+            line-height: 1.5; /* 1.5 倍行高 */
         }
         p{
-            margin:0 5px 0 8px;
-            font-size: 15px;
+            margin:0 13px 3px 12px;
+            font-size: 14px;
+            line-height: 1.25; /* 1.5 倍行高 */
         }
         .text{
             width:100%;
+
+
         }
-
-
-
+        .font{
+        font-size: 15px;
+        }
     </style>
 </head>
 <body>
@@ -251,11 +252,11 @@
     <div class="swiper-container" id="swiperContainer">
         <div class="swiper-wrapper">
             <div class="swiper-slide" id="item0">
-                <div class="text"><h2>题目：Recommender Systems for Good (RS4Good): Survey of Use Cases and a Call to Action for Research that Matters</h2></div>
+                <div class="text"><h3>Recommender Systems for Good (RS4Good): Survey of Use Cases and a Call to Action for Research that Matters</h3></div>
                 <br>
-                <div class="text"><p>作者：Dietmar Jannach, Alan Said, Marko Tkalčič, Markus Zanker</p></div>
-                <div class="text"><p>日期：2024-11-25</p></div>
-                <div class="text"><p>摘要：In the area of recommender systems, the vast majority of research efforts is
+                <div class="text"><p><span class="font">作者：</span>Dietmar Jannach, Alan Said, Marko Tkalčič, Markus Zanker</p></div>
+                <div class="text"><p style="text-align: justify;"><span class="font">日期：2024-11-25</span></p></div>
+                <div class="text"><p style="text-align: justify;"><span class="font">摘要：</span>In the area of recommender systems, the vast majority of research efforts is
 spent on developing increasingly sophisticated recommendation models, also
 using increasingly more computational resources. Unfortunately, most of these
 research efforts target a very small set of application domains, mostly
@@ -276,7 +277,7 @@ successfully explored in the literature. </p></div>
                 </div>
             </div>
             <div class="swiper-slide" id="item1">
-                <div class="text"><h2>题目：F -- A Model of Events based on the Foundational Ontology DOLCE+DnS Ultralite</h2></div>
+                <div class="text"><h3>F -- A Model of Events based on the Foundational Ontology DOLCE+DnS Ultralite</h3></div>
                 <br>
                 <div class="text"><p>作者：Ansgar Scherp, Thomas Franz, Carsten Saathoff, Steffen Staab</p></div>
                 <div class="text"><p>日期：2024-11-25</p></div>
@@ -299,7 +300,7 @@ specific ontologies.</p></div>
                 </div>
             </div>
             <div class="swiper-slide" id="item2">
-                <div class="text"><h2>题目：When Is Heterogeneity Actionable for Personalization?</h2></div>
+                <div class="text"><h3>When Is Heterogeneity Actionable for Personalization?</h3></div>
                 <br>
                 <div class="text"><p>作者：Anya Shchetkina, Ron Berman</p></div>
                 <div class="text"><p>日期：2024-11-25</p></div>
@@ -348,7 +349,7 @@ personalization gain.  </p></div>
             </div>
         </div>
     </div>
-    <span class="close" onclick="closeModal()">&times;</span> <!-- 关闭按钮 -->
+    <span class="close" onclick="closeModal()">&times;</span>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         let previousIndex = 0; // 用于保存之前的滑动索引
