@@ -13,6 +13,7 @@
             font-family: Arial, sans-serif;
             overflow: hidden; /* 隐藏页面滚动条 */
             position: relative;
+            overflow: hidden; /* 禁止页面滚动 */
         }
         .swiper-container {
             display: flex;
@@ -373,9 +374,19 @@ personalization gain.  </p></div>
             const closeButton = document.querySelector('.close');
             closeButton.style.display = 'none'; // 关闭模态框时隐藏关闭按钮
             swiper.slideTo(previousIndex); // 滑动到之前的索引
+
+            // 重置滚动位置
+            window.scrollTo(0, 0);
         }
         function openPDF(pdfUrl) {
-            window.open(pdfUrl, '_blank'); // 在新标签页中打开 PDF 文件
+            // 先记录当前的滚动位置
+            const scrollY = window.scrollY;
+
+            // 在新标签页中打开 PDF 文件
+            window.open(pdfUrl, '_blank');
+
+            // 返回之前的页面并设置滚动位置
+            window.scrollTo(0, scrollY);
         }
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
